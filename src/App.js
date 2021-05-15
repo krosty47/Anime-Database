@@ -1,48 +1,50 @@
-import Header from './components/Header';
-import Sidebar from './components/Sidebar'
-import MainContent from './components/MainContent'
 import { useState, useEffect } from 'react';
+import Header from './components/Header';
+import Sidebar from './components/Sidebar';
+import MainContent from './components/MainContent';
 
 export default function App() {
-  const [animeList, setAnimeList] = useState([]);
-  const [topAnime, setTopAnime] = useState([]);
-  const [search, setSearch] = useState("");
+	const [animeList, SetAnimeList] = useState([]);
+	const [topAnime, SetTopAnime] = useState([]);
+	const [search, SetSearch] = useState("");
 
-  const getTopAnime = async () => {
-    const temp = await fetch (`https://api.jikan.moe/v3/top/anime/1/bypopularity`)
-    .then(data => data.json());
+	const GetTopAnime = async () => {
+		const temp = await fetch(`https://api.jikan.moe/v3/top/anime/1/bypopularity`)
+			.then(res => res.json());
 
-    setTopAnime(temp.top.slice(0,5));
-  }
+		SetTopAnime(temp.top.slice(0, 5));
+	}
 
-  const handleSearch = e => {
-    e.preventDefault();
+	const HandleSearch = e => {
+		e.preventDefault();
 
-    getAnimeList(search);
-  }
+		FetchAnime(search);
+	}
 
-  const getAnimeList = async (query) => {
-    const temp = await fetch (`https://api.jikan.moe/v3/search/anime?q=${query}&order_by=title&sort=asc&limit=10`)
-    .then(data => data.json());
+	const FetchAnime = async (query) => {
+		const temp = await fetch(`https://api.jikan.moe/v3/search/anime?q=${query}&order_by=title&sort=asc&limit=10`)
+			.then(res => res.json());
 
-    setAnimeList(temp.results);
-  }
+		SetAnimeList(temp.results);
+	}
 
-
-  useEffect(() => {
-    getTopAnime();
-  }, [])
-
-
-  return (
-    <div className="App">
-      <Header />
-      <div classname="content-wrap">
-        <Sidebar topAnime={topAnime} />
-        <MainContent handleSearch={handleSearch} search={search} setSearch={setSearch} animeList={animeList} />
-      </div>
-    </div>
-  );
+	useEffect(() => {
+		GetTopAnime();
+	}, []);
+	
+	return (
+		<div className="App">
+			<Header />
+			<div className="content-wrap">
+				<Sidebar 
+					topAnime={topAnime} />
+				<MainContent
+					HandleSearch={HandleSearch}
+					search={search}
+					SetSearch={SetSearch}
+					animeList={animeList} />
+			</div>
+		</div>
+	);
 }
-
 
