@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import MainContent from './components/MainContent';
+import SignUp from './components/SignUp'
+import {AuthProvider} from './contexts/AuthContext'
+
 
 export default function App() {
 	const [animeList, SetAnimeList] = useState([]);
@@ -33,7 +36,9 @@ export default function App() {
 	}, []);
 	
 	return (
+		<AuthProvider>
 		<div className="App">
+			<SignUp />
 			<Header />
 			<div className="content-wrap">
 				<Sidebar 
@@ -45,6 +50,7 @@ export default function App() {
 					animeList={animeList} />
 			</div>
 		</div>
+		</AuthProvider>
 	);
 }
 
