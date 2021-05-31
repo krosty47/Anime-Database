@@ -2,12 +2,10 @@ import React, { useRef, useState } from 'react'
 import { useAuth } from '../contexts/AuthContext'
 import { Link, useHistory } from 'react-router-dom'
 
-
-export default function SignUp() {
+export default function Login() {
     const emailRef = useRef()
     const passwordRef = useRef()
-    const passwordconfirmRef = useRef()
-    const { signup } = useAuth()
+    const { login } = useAuth()
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
     const history = useHistory()
@@ -16,17 +14,14 @@ export default function SignUp() {
     async function HandleSubmit(e) {
         e.preventDefault()
 
-        if (passwordRef.current.value !== passwordconfirmRef.current.value) {
-            return setError('Password do not match')
-        }
         try {
             setError('')
             setLoading(true)
-            await signup(emailRef.current.value, passwordRef.current.value)
+            await login(emailRef.current.value, passwordRef.current.value)
             history.push("/")
         }
         catch {
-            setError('Failed to create an account')
+            setError('Failed to Log In')
         }
         setLoading(false)
     }
@@ -38,19 +33,20 @@ export default function SignUp() {
                 <ul className="list">
                     <li className="list-item">
                         <div>
-                            <h2>Sign Up</h2>
+                            <h2>Log In</h2>
                             <p>{error}</p>
                             <form onSubmit={HandleSubmit}>
                                 <label>Email</label>
                                 <input type='text' name='email' ref={emailRef}></input>
                                 <label>Password</label>
                                 <input type='password' name='email' ref={passwordRef}></input>
-                                <label>Password Confirmation</label>
-                                <input type='password' name='email' ref={passwordconfirmRef}></input>
-                                <button disabled={loading} className='SignUp' type='submit'>Sign Up</button>
+                                <button disabled={loading} className='LogIn' type='submit'>Log In</button>
                             </form>
+                            <div>
+                                <Link to='/forgot-password'>Forgot Password?</Link>
+                            </div>
                         </div>
-                        <div>Already have an account? Sign Up <Link to='login'>Log In</Link></div>
+                        <div>Need an account? Log In <Link to='/signup'>Sign Up</Link></div>
                     </li>
                 </ul>
             </nav>

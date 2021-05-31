@@ -3,7 +3,13 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import MainContent from './components/MainContent';
 import SignUp from './components/SignUp'
-import {AuthProvider} from './contexts/AuthContext'
+import Dashboard from './components/Dashboard'
+import Login from './components/Login'
+import PrivateRoute from './components/PrivateRoute'
+import ForgotPassword from './components/ForgotPassword'
+import UpdateProfile from './components/UpdateProfile'
+import { AuthProvider } from './contexts/AuthContext'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 
 export default function App() {
@@ -34,23 +40,31 @@ export default function App() {
 	useEffect(() => {
 		GetTopAnime();
 	}, []);
-	
+
 	return (
-		<AuthProvider>
-		<div className="App">
-			<SignUp />
-			<Header />
-			<div className="content-wrap">
-				<Sidebar 
-					topAnime={topAnime} />
-				<MainContent
-					HandleSearch={HandleSearch}
-					search={search}
-					SetSearch={SetSearch}
-					animeList={animeList} />
-			</div>
-		</div>
-		</AuthProvider>
+		<Router>
+			<AuthProvider>
+				<Switch>
+					<PrivateRoute exact path='/' component={Dashboard} />
+					<PrivateRoute path='/update-profile' component={UpdateProfile} />
+					<Route path='/signup' component={SignUp} />
+					<Route path='/login' component={Login} />
+					<Route path='/forgot-password' component={ForgotPassword} />
+					<div className="App">
+						<Header />
+						<div className="content-wrap">
+							<Sidebar
+								topAnime={topAnime} />
+							<MainContent
+								HandleSearch={HandleSearch}
+								search={search}
+								SetSearch={SetSearch}
+								animeList={animeList} />
+						</div>
+					</div>
+				</Switch>
+			</AuthProvider>
+		</Router>
 	);
 }
 
