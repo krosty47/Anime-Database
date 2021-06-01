@@ -45,7 +45,7 @@ export default function App() {
 		<Router>
 			<AuthProvider>
 				<Switch>
-					<PrivateRoute exact path='/' component={Dashboard} />
+					<PrivateRoute exact path='/dashboard' component={Dashboard} />
 					<PrivateRoute path='/update-profile' component={UpdateProfile} />
 					<Route path='/signup' component={SignUp} />
 					<Route path='/login' component={Login} />

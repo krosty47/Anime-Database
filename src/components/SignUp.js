@@ -23,7 +23,7 @@ export default function SignUp() {
             setError('')
             setLoading(true)
             await signup(emailRef.current.value, passwordRef.current.value)
-            history.push("/")
+            history.push("/dashboard")
         }
         catch {
             setError('Failed to create an account')
@@ -50,7 +50,7 @@ export default function SignUp() {
                                 <button disabled={loading} className='SignUp' type='submit'>Sign Up</button>
                             </form>
                         </div>
-                        <div>Already have an account? Sign Up <Link to='login'>Log In</Link></div>
+                        <div>Already have an account? Sign Up <Link to='/login'>Log In</Link></div>
                     </li>
                 </ul>
             </nav>

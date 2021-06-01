@@ -22,6 +22,7 @@ export default function Dashboard() {
 
     return (
         <div>
+            <div><Link to='/'>BACK TO ANIME DATABASE</Link></div>
             <h2>Profile</h2>
             <p>{error}</p>
             <strong>Email:</strong>{currentUser.email}
