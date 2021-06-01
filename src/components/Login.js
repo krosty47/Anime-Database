@@ -66,41 +66,36 @@ export default function Login() {
         setLoading(false)
     }
 
+    //<div className='back'><Link to='/'>BACK TO ANIME DATABASE</Link></div>
 
     return (
-        <header className="navbar">
-            <nav>
-                <ul className="list">
-                    <li className="list-item">
-                        <div>
-                            <div><Link to='/'>BACK TO ANIME DATABASE</Link></div>
-                            <h2>Log In</h2>
-                            <p>{error}</p>
-                            <form method='post' onSubmit={HandleSubmit}>
-                                <div class='txt_field'>
-                                    <label>Email</label>
-                                    <input type='text' name='email' ref={emailRef} value={input.email} onChange={handleInputChange}></input>
-                                    {errors.email && (
-                                        <p className="danger">{errors.email}</p>
-                                    )}
-                                </div>
-                                <div class='txt_field'>
-                                    <label>Password</label>
-                                    <input type='password' name='password' ref={passwordRef} value={input.password} onChange={handleInputChange}></input>
-                                    {errors.password && (
-                                        <p className="danger">{errors.password}</p>
-                                    )}
-                                </div>
-                                <button disabled={loading} className='LogIn' type='submit'>Log In</button>
-                                <div class='pass'>
-                                    <Link to='/forgot-password'>Forgot Password?</Link>
-                                </div>
-                            </form>
-                            <div class='signup_link'>Need an account?<Link to='/signup'>Sign Up</Link></div>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
-        </header>
+
+        <div className='center' >
+            <form method='post' onSubmit={HandleSubmit}>
+            <h2>Log In</h2>
+            <p>{error}</p>
+                <div className='txt_field'>
+                    <input type='text' name='email' ref={emailRef} value={input.email} onChange={handleInputChange} required />
+                    <label>Email</label>
+                    <span></span>
+                    {errors.email && (
+                        <p className="danger">{errors.email}</p>
+                    )}
+                </div>
+                <div className='txt_field'>
+                    <input type='password' name='password' ref={passwordRef} value={input.password} onChange={handleInputChange} required />
+                    <label>Password</label>
+                    <span></span>
+                    {errors.password && (
+                        <p className="danger">{errors.password}</p>
+                    )}
+                </div>
+                <div className='pass'>
+                    <Link className='pass' to='/forgot-password'>Forgot Password?</Link>
+                </div>
+                <button disabled={loading} className='LogIn' type='submit'>Log In</button>
+            </form>
+            <div className='signup_link'>Need an account?<Link className='signup_link2' to='/signup'>Sign Up</Link></div>
+        </div>
     )
 }
