@@ -72,8 +72,8 @@ export default function Login() {
 
         <div className='center' >
             <form method='post' onSubmit={HandleSubmit}>
-            <h2>Log In</h2>
-            <p>{error}</p>
+                <h2>Log In</h2>
+                <p>{error}</p>
                 <div className='txt_field'>
                     <input type='text' name='email' ref={emailRef} value={input.email} onChange={handleInputChange} required />
                     <label>Email</label>

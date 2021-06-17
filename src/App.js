@@ -24,22 +24,22 @@ export default function App() {
 		SetTopAnime(temp.top.slice(0, 5));
 	}
 
+	const FetchAnime = async (query) => {
+		const temp = await fetch(`https://api.jikan.moe/v3/search/anime?q=${query}&order_by=title&sort=asc&limit=10`)
+		.then(res => res.json());
+		
+		SetAnimeList(temp.results);
+	}
 	const HandleSearch = e => {
 		e.preventDefault();
 
 		FetchAnime(search);
 	}
-
-	const FetchAnime = async (query) => {
-		const temp = await fetch(`https://api.jikan.moe/v3/search/anime?q=${query}&order_by=title&sort=asc&limit=10`)
-			.then(res => res.json());
-
-		SetAnimeList(temp.results);
-	}
-
+	
 	useEffect(() => {
 		GetTopAnime();
 	}, []);
+
 
 	return (
 		<Router>

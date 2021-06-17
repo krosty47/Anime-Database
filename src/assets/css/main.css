@@ -175,6 +175,41 @@ header h1 strong{
 
 /*# BEGINNING  main  / MainContent #*/
 
+.content-wrap main .mainNavBar{
+    width: 215px;
+    padding-right:16px;
+    position: absolute;
+    left:1%;
+    top:2%;
+
+}
+
+.content-wrap main .mainButtons{
+    display:block;
+    padding:8px 16px;
+    text-align:left;
+    color:#888;
+    font-size:16px;
+    margin-bottom:16px;
+    background-color:#EEE;
+    border-radius:999px;
+    text-decoration:none;
+    -webkit-transition:0.4s;
+    transition:0.4s;
+    cursor:pointer;
+
+}
+.content-wrap main .mainButtons:hover{
+    background-color:#313131;
+    color:#AAA;
+
+}
+
+.content-wrap main.linkCss, .content-wrap main.linkCss:hover, .content-wrap main.linkCss:focus, .content-wrap main.linkCss:active {
+    text-decoration: none;
+    color: inherit;
+}
+
 .content-wrap main{
     -webkit-box-flex:1;
     -ms-flex:1 1 0%;

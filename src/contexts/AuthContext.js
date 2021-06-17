@@ -17,12 +17,12 @@ export function AuthProvider({ children }) {
     const [loading, setLoading] = useState(true)
 
 
-    // SI NO QUIERO HACERLO CON FIREFOX, TENGO QUE CAMBIAR ESTA FUNCTION 
+    // SI NO QUIERO HACERLO CON FIREBASE, TENGO QUE CAMBIAR ESTA FUNCTION 
     function signup(email, password) {
         return auth.createUserWithEmailAndPassword(email, password)
     }
 
-    // SI NO QUIERO HACERLO CON FIREFOX, TENGO QUE CAMBIAR ESTA FUNCTION 
+    // SI NO QUIERO HACERLO CON FIREBASE, TENGO QUE CAMBIAR ESTA FUNCTION 
     function login(email, password) {
         return auth.signInWithEmailAndPassword(email, password)
     }
@@ -35,11 +35,11 @@ export function AuthProvider({ children }) {
         return auth.sendPasswordResetEmail(email)
     }
 
-    function updateEmail(email){
+    function updateEmail(email) {
         return currentUser.updateEmail(email)
     }
 
-    function updatePassword(password){
+    function updatePassword(password) {
         return currentUser.updatePassword(password)
     }
 
