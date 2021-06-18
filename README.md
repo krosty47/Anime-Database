@@ -1,5 +1,5 @@
 # Anime Database App
-To prove my hability on the following technologies:
+To test my habilities with the following technologies:
 - React (lot of hooks)
 - Firebase (login)
 - HTML5
@@ -9,11 +9,11 @@ I've created this application using data from [Jikan Api](https://jikan.moe/ "Ji
 
 To run the application:
 
-- Rrun the following commands:
+- Run the following commands:
 ### `npm install`
 ### `npm start`
 
 
--Finally, open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+-Finally, open [http://localhost:3000](http://localhost:3000) at browser.
 
-As always, feel free to reach out for any suggestions!
+Feel free to reach me out for any suggestions!
