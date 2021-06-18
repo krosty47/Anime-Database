@@ -5,7 +5,7 @@ To prove my hability on the following technologies:
 - HTML5
 - CSS3
 
-I've created this application using data from [REST API](https://jikan.moe/ "Jikan API").
+I've created this application using data from [Jikan Api](https://jikan.moe/ "Jikan API").
 
 To run the application:
 
